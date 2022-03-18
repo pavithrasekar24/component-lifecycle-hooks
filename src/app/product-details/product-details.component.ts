@@ -7,6 +7,7 @@ import {
   OnInit,
   Output,
   SimpleChange,
+  ViewChild,
 } from '@angular/core';
 
 @Component({
@@ -17,9 +18,11 @@ import {
 export class ProductDetailsComponent implements OnInit {
   @Input() product: string = '';
   @Input() details: any[] = [];
+  @Input() colorName: string = '';
   @Output() handleDelete = new EventEmitter<number>();
 
   @ContentChild('detailsProduct') detailsProduct: ElementRef;
+  @ViewChild('footer') footer: ElementRef;
   constructor() {
     console.log('constructor');
   }
@@ -40,14 +43,22 @@ export class ProductDetailsComponent implements OnInit {
 
   ngAfterContentInit() {
     console.log('contentInit', this.detailsProduct);
+    // this.detailsProduct.nativeElement.setAttribute(
+    //   'style',
+    //   'color:' + this.colorName
+    // );
   }
   ngAfterContentChecked() {
     console.log('contentChecked');
+    this.detailsProduct.nativeElement.setAttribute(
+      'style',
+      'color:' + this.colorName
+    );
   }
 
-  // ngAfterViewInit() {
-  //   console.log('viewInit');
-  // }
+  ngAfterViewInit() {
+    console.log('viewInit', this.footer);
+  }
 
   // ngAfterViewContent() {
   //   console.log('viewContent');

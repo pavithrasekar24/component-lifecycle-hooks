@@ -1,7 +1,9 @@
-<h3 #detailsProduct>Product Details</h3>
+<ng-content></ng-content>
 <ul *ngFor="let item of details; let i = index">
   <li class="product-data">
     <label>{{ item }} </label
     ><button class="delete-btn" (click)="handleClick(i)">Delete</button>
   </li>
 </ul>
+
+<footer #footer>Happy Learning</footer>
