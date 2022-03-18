@@ -10,7 +10,10 @@ export class AddProductComponent implements OnInit {
   productDetails: any[] = ['Laptop', 'Wireless Mouse', 'Keyboard'];
   constructor() {}
   handleAdd() {
-    if (this.productName) this.productDetails.push(this.productName);
+    if (this.productName) {
+      this.productDetails.push(this.productName);
+      this.productName = '';
+    }
   }
   handleDelete(i: number) {
     this.productDetails.splice(i, 1);

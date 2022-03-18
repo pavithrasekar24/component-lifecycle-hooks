@@ -1,5 +1,7 @@
 import {
   Component,
+  ContentChild,
+  ElementRef,
   EventEmitter,
   Input,
   OnInit,
@@ -16,6 +18,8 @@ export class ProductDetailsComponent implements OnInit {
   @Input() product: string = '';
   @Input() details: any[] = [];
   @Output() handleDelete = new EventEmitter<number>();
+
+  @ContentChild('detailsProduct') detailsProduct: ElementRef;
   constructor() {
     console.log('constructor');
   }
@@ -35,17 +39,17 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   ngAfterContentInit() {
-    console.log('contentInit');
+    console.log('contentInit', this.detailsProduct);
   }
   ngAfterContentChecked() {
     console.log('contentChecked');
   }
 
-  ngAfterViewInit() {
-    console.log('viewInit');
-  }
+  // ngAfterViewInit() {
+  //   console.log('viewInit');
+  // }
 
-  ngAfterViewContent() {
-    console.log('viewContent');
-  }
+  // ngAfterViewContent() {
+  //   console.log('viewContent');
+  // }
 }
