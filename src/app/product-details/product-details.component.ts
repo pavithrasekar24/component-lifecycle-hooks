@@ -22,7 +22,7 @@ export class ProductDetailsComponent implements OnInit {
   @Output() handleDelete = new EventEmitter<number>();
 
   @ContentChild('detailsProduct') detailsProduct: ElementRef;
-  @ViewChild('footer') footer: ElementRef;
+  @ViewChild('footerTitle') footerTitle: ElementRef;
   constructor() {
     console.log('constructor');
   }
@@ -57,10 +57,18 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    console.log('viewInit', this.footer);
+    console.log('viewInit', this.footerTitle);
+    this.footerTitle.nativeElement.setAttribute(
+      'style',
+      'background-color:' + this.colorName
+    );
   }
 
-  // ngAfterViewContent() {
-  //   console.log('viewContent');
-  // }
+  ngAfterViewChecked() {
+    console.log('viewContent');
+    this.footerTitle.nativeElement.setAttribute(
+      'style',
+      'background-color:' + this.colorName
+    );
+  }
 }
