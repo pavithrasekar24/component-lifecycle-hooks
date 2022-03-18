@@ -65,7 +65,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   ngAfterViewChecked() {
-    console.log('viewContent');
+    console.log('viewChecked', this.footerTitle);
     this.footerTitle.nativeElement.setAttribute(
       'style',
       'background-color:' + this.colorName
