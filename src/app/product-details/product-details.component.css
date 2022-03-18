@@ -1,0 +1,13 @@
+.delete-btn {
+  background-color: rgb(128, 9, 0);
+  margin: 0 20px;
+  border: 1px solid;
+  color: white;
+  padding: 5px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.product-data {
+  display: flex;
+  justify-content: space-between;
+}

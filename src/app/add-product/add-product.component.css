@@ -1,0 +1,22 @@
+.box-content {
+  margin: 20px;
+  border: 2px solid;
+  padding: 20px;
+}
+button {
+  background-color: green;
+  margin: 0 20px;
+  border: 1px solid;
+  color: white;
+  padding: 5px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+input {
+  padding: 5px;
+  border: 1px solid lightgreen;
+}
+input::placeholder {
+  color: lightgreen;
+}

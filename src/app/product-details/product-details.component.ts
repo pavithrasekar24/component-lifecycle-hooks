@@ -1,4 +1,11 @@
-import { Component, OnInit, SimpleChange } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  SimpleChange,
+} from '@angular/core';
 
 @Component({
   selector: 'app-product-details',
@@ -6,8 +13,15 @@ import { Component, OnInit, SimpleChange } from '@angular/core';
   styleUrls: ['./product-details.component.css'],
 })
 export class ProductDetailsComponent implements OnInit {
+  @Input() product: string = '';
+  @Input() details: any[] = [];
+  @Output() handleDelete = new EventEmitter<number>();
   constructor() {
     console.log('constructor');
+  }
+
+  handleClick(i: number) {
+    this.handleDelete.emit(i);
   }
 
   ngOnChanges(changes: SimpleChange) {

@@ -1,0 +1,12 @@
+<div class="box-content">
+  <h3>Add Product</h3>
+  <input placeholder="Enter Product Name" [(ngModel)]="productName" />
+  <button (click)="handleAdd()">Add</button>
+</div>
+<div class="box-content">
+  <app-product-details
+    [product]="productName"
+    [details]="productDetails"
+    (handleDelete)="handleDelete($event)"
+  ></app-product-details>
+</div>

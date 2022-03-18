@@ -1,1 +1,7 @@
-<input matInput placeholder="Placeholder" ([ngModel])="(productName)" />
+<h3>Product Details</h3>
+<ul *ngFor="let item of details; let i = index">
+  <li class="product-data">
+    <label>{{ item }} </label
+    ><button class="delete-btn" (click)="handleClick(i)">Delete</button>
+  </li>
+</ul>
