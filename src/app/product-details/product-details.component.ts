@@ -9,6 +9,7 @@ import {
   SimpleChange,
   ViewChild,
 } from '@angular/core';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-product-details',
@@ -19,20 +20,24 @@ export class ProductDetailsComponent implements OnInit {
   @Input() product: string = '';
   @Input() details: any[] = [];
   @Input() colorName: string = '';
+
   @Output() handleDelete = new EventEmitter<number>();
 
   @ContentChild('detailsProduct') detailsProduct: ElementRef;
+  @ViewChild('footerComp') footerComp: FooterComponent;
   @ViewChild('footerTitle') footerTitle: ElementRef;
+
   constructor() {
     console.log('constructor');
   }
 
   handleClick(i: number) {
     this.handleDelete.emit(i);
+    this.footerComp.handleAlert();
   }
 
   ngOnChanges(changes: SimpleChange) {
-    console.log('changes', changes);
+    console.log('changes', changes, this.detailsProduct);
   }
   ngOnInit() {
     console.log('onInit');
@@ -43,10 +48,10 @@ export class ProductDetailsComponent implements OnInit {
 
   ngAfterContentInit() {
     console.log('contentInit', this.detailsProduct);
-    // this.detailsProduct.nativeElement.setAttribute(
-    //   'style',
-    //   'color:' + this.colorName
-    // );
+    this.detailsProduct.nativeElement.setAttribute(
+      'style',
+      'color:' + this.colorName
+    );
   }
   ngAfterContentChecked() {
     console.log('contentChecked');
@@ -62,6 +67,7 @@ export class ProductDetailsComponent implements OnInit {
       'style',
       'background-color:' + this.colorName
     );
+    console.log('footercompoet', this.footerComp.greeting);
   }
 
   ngAfterViewChecked() {
