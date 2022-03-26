@@ -48,6 +48,10 @@ export class ProductDetailsComponent implements OnInit {
 
   ngAfterContentInit() {
     console.log('contentInit', this.detailsProduct);
+    this.setColor();
+  }
+
+  setColor() {
     this.detailsProduct.nativeElement.setAttribute(
       'style',
       'color:' + this.colorName
@@ -55,10 +59,7 @@ export class ProductDetailsComponent implements OnInit {
   }
   ngAfterContentChecked() {
     console.log('contentChecked');
-    this.detailsProduct.nativeElement.setAttribute(
-      'style',
-      'color:' + this.colorName
-    );
+    this.setColor();
   }
 
   ngAfterViewInit() {
