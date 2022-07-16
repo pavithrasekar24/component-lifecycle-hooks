@@ -20,12 +20,11 @@ export class ProductDetailsComponent implements OnInit {
   @Input() product: string = '';
   @Input() details: any[] = [];
   @Input() colorName: string = '';
+  @ContentChild('detailsProduct') detailsProduct: ElementRef;
+  @ViewChild('name') name: ElementRef;
+  @ViewChild('footerComp') footerComp: FooterComponent;
 
   @Output() handleDelete = new EventEmitter<number>();
-
-  @ContentChild('detailsProduct') detailsProduct: ElementRef;
-  @ViewChild('footerComp') footerComp: FooterComponent;
-  @ViewChild('footerTitle') footerTitle: ElementRef;
 
   constructor() {
     console.log('constructor');
@@ -33,49 +32,29 @@ export class ProductDetailsComponent implements OnInit {
 
   handleClick(i: number) {
     this.handleDelete.emit(i);
-    this.footerComp.handleAlert();
   }
 
   ngOnChanges(changes: SimpleChange) {
-    console.log('changes', changes, this.detailsProduct);
+    console.log('changes', changes);
   }
+
   ngOnInit() {
-    console.log('onInit');
+    console.log('init');
   }
+
   ngDoCheck() {
-    console.log('check');
+    console.log('docheck');
   }
 
   ngAfterContentInit() {
     console.log('contentInit', this.detailsProduct);
-    this.setColor();
-  }
-
-  setColor() {
-    this.detailsProduct.nativeElement.setAttribute(
-      'style',
-      'color:' + this.colorName
-    );
+    this.detailsProduct.nativeElement.style.color = this.colorName;
   }
   ngAfterContentChecked() {
-    console.log('contentChecked');
-    this.setColor();
+    console.log('contentchecked', this.detailsProduct);
+    this.detailsProduct.nativeElement.style.color = this.colorName;
   }
-
-  ngAfterViewInit() {
-    console.log('viewInit', this.footerTitle);
-    this.footerTitle.nativeElement.setAttribute(
-      'style',
-      'background-color:' + this.colorName
-    );
-    console.log('footercompoet', this.footerComp.greeting);
-  }
-
-  ngAfterViewChecked() {
-    console.log('viewChecked', this.footerTitle);
-    this.footerTitle.nativeElement.setAttribute(
-      'style',
-      'background-color:' + this.colorName
-    );
-  }
+  // ngAfterViewInit() {
+  //   console.log('viewInit', this.name);
+  // }
 }
