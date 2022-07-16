@@ -54,7 +54,14 @@ export class ProductDetailsComponent implements OnInit {
     console.log('contentchecked', this.detailsProduct);
     this.detailsProduct.nativeElement.style.color = this.colorName;
   }
-  // ngAfterViewInit() {
-  //   console.log('viewInit', this.name);
-  // }
+  ngAfterViewInit() {
+    console.log('viewInit', this.name,    this.footerComp.greeting
+    );
+    this.name.nativeElement.style.color = this.colorName;
+  }
+
+  ngAfterViewChecked() {
+    console.log('viewchecked', this.name, this.footerComp.greeting);
+    this.name.nativeElement.style.color = this.colorName;
+  }
 }
