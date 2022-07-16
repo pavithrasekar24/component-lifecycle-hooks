@@ -55,13 +55,15 @@ export class ProductDetailsComponent implements OnInit {
     this.detailsProduct.nativeElement.style.color = this.colorName;
   }
   ngAfterViewInit() {
-    console.log('viewInit', this.name,    this.footerComp.greeting
-    );
+    console.log('viewInit', this.name, this.footerComp.greeting);
     this.name.nativeElement.style.color = this.colorName;
   }
 
   ngAfterViewChecked() {
     console.log('viewchecked', this.name, this.footerComp.greeting);
     this.name.nativeElement.style.color = this.colorName;
+  }
+  ngOnDestroy() {
+    console.log('destroy');
   }
 }
